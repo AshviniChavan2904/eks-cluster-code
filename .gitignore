@@ -1,0 +1,5 @@
+.terraform
+.terraform.lock.hcl
+jenkins-tf-awscli-install.tf
+terraform.*
+!terraform.tfvars
