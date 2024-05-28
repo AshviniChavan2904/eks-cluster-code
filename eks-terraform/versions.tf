@@ -3,32 +3,28 @@ terraform {
   required_version = ">= 0.12"
   required_providers {
     random = {
-      source = "hashicorp/random"
-      version = "3.6.2"
+      source  = "hashicorp/random"
+      version = "~> 3.1.0"
     }
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
       version = ">=2.7.1"
     }
     aws = {
-      source = "hashicorp/aws"
-      version = "5.51.1"
+      source  = "hashicorp/aws"
+      version = ">= 3.68.0"
     }
     local = {
-      source = "hashicorp/local"
-      version = "2.5.1"
+      source  = "hashicorp/local"
+      version = "~> 2.1.0"
     }
     null = {
-      source = "hashicorp/null"
-      version = "3.2.2"
+      source  = "hashicorp/null"
+      version = "~> 3.1.0"
     }
     cloudinit = {
-      source = "hashicorp/cloudinit"
-      version = "2.3.4"
+      source  = "hashicorp/cloudinit"
+      version = "~> 2.2.0"
     }
   }
-}
-
-provider "aws" {
-  region = "us-east-1"
 }
