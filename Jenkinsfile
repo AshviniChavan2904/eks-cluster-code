@@ -41,12 +41,22 @@ pipeline {
                 }                
             }
         }
-        stage('Terraform Resource Creation') {
+        // stage('Terraform Resource Creation') {
+        //     steps {
+        //         dir('eks-terraform') {
+        //             input(message: "Do you want to apply the changes?", ok: "Proceed")                    
+        //             sh 'terraform $action --auto-approve'                    
+        //         }                
+        //     }
+        // }
+        stage('Deploy K8s App') {
             steps {
-                dir('eks-terraform') {
-                    input(message: "Do you want to apply the changes?", ok: "Proceed")                    
-                    sh 'terraform $action --auto-approve'                    
-                }                
+                dir('kubernetes-app-code') {
+                    sh '''
+                    aws eks --region "us-east-1" update-kubeconfig --name test-eks-1F1YWaTG
+                    kubectl apply -f .
+                    '''
+                }
             }
         }
     }
