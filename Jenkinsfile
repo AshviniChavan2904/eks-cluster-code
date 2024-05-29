@@ -49,15 +49,15 @@ pipeline {
                 }                
             }
         }
-        // stage('Deploy K8s App') {
-        //     steps {
-        //         dir('kubernetes-app-code') {
-        //             sh '''
-        //             aws eks --region "us-east-1" update-kubeconfig --name test-eks-1F1YWaTG
-        //             kubectl apply -f .
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Deploy K8s Voting App') {
+            steps {
+                dir('example-voting-app-kubernetes') {
+                    sh '''
+                    aws eks --region "us-east-1" update-kubeconfig --name test-eks-72XMEz3q
+                    kubectl apply -f .
+                    '''
+                }
+            }
+        }
     }
 }
