@@ -54,15 +54,15 @@ pipeline {
                 dir('example-voting-app-kubernetes-v2') {
                 sh '''
                 aws eks --region "us-east-1" update-kubeconfig --name test-eks-72XMEz3q
-                kubectl create -f voting-app-deployment.yml
-                kubectl create -f voting-app-service.yml
-                kubectl create -f result-app-deployment.yml 
-                kubectl create -f result-app-service.yml
-                kubectl create -f worker-app-deployment.yml
-                kubectl create -f postgres-deployment.yml
-                kubectl create -f postgres-service.yml
-                kubectl create -f redis-deployment.yml
-                kubectl create -f redis-service.yml
+                kubectl create -f example-voting-app-kubernetes-v2/voting-app-deployment.yml
+                kubectl create -f example-voting-app-kubernetes-v2/voting-app-service.yml
+                kubectl create -f example-voting-app-kubernetes-v2/result-app-deployment.yml 
+                kubectl create -f example-voting-app-kubernetes-v2/result-app-service.yml
+                kubectl create -f example-voting-app-kubernetes-v2/worker-app-deployment.yml
+                kubectl create -f example-voting-app-kubernetes-v2/postgres-deployment.yml
+                kubectl create -f example-voting-app-kubernetes-v2/postgres-service.yml
+                kubectl create -f example-voting-app-kubernetes-v2/redis-deployment.yml
+                kubectl create -f example-voting-app-kubernetes-v2/redis-service.yml
                 '''
                 }
             }
