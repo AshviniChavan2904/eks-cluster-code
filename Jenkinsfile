@@ -51,20 +51,10 @@ pipeline {
         }
         stage('Deploy K8s Voting App') {
             steps {
-                dir('example-voting-app-kubernetes') {
-                    sh '''
-                    aws eks --region "us-east-1" update-kubeconfig --name test-eks-72XMEz3q
-                    kubectl apply -f voting-app-deploy.yaml
-                    kubectl apply -f voting-app-service.yaml
-                    kubectl apply -f result-app-deploy.yaml
-                    kubectl apply -f result-app-service.yaml
-                    kubectl apply -f worker-app.deploy.yaml                    
-                    kubectl apply -f postgres-deploy.yaml
-                    kubectl apply -f postgres-service.yaml
-                    kubectl apply -f redis-deploy.yaml
-                    kubectl apply -f redis-service.yaml
-                    '''
-                }
+                sh '''
+                aws eks --region "us-east-1" update-kubeconfig --name test-eks-72XMEz3q
+                kubectl create -f example-voting-app-kubernetes-v2/
+                '''
             }
         }
     }
